@@ -1,0 +1,596 @@
+{
+  "name": "stock management",
+  "nodes": [
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        16,
+        192
+      ],
+      "id": "afd16cd6-be6a-4d56-92a8-fffff069e280",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -240,
+        -48
+      ],
+      "id": "4b3fcba5-3dd7-40b7-98a4-3250305cee7f",
+      "name": "When chat message received",
+      "webhookId": "03859ffa-aa53-4676-b9be-266e70f1d12f"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1KjLoFdF0DGB2uKQHNTewGJWFvWI7rI7YnuGaBIjXN2w",
+          "mode": "list",
+          "cachedResultName": "stock sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KjLoFdF0DGB2uKQHNTewGJWFvWI7rI7YnuGaBIjXN2w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KjLoFdF0DGB2uKQHNTewGJWFvWI7rI7YnuGaBIjXN2w/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        256,
+        176
+      ],
+      "id": "f546491f-01a5-4e82-b33a-68a79da03ed0",
+      "name": "read stock",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "D8Xjxgxg2XEk1MqE",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ORN9ADRqOJq5Wel8Er1aiqsfdKDiN8VtQgzrH_oUI6E",
+          "mode": "list",
+          "cachedResultName": "recipes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ORN9ADRqOJq5Wel8Er1aiqsfdKDiN8VtQgzrH_oUI6E/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ORN9ADRqOJq5Wel8Er1aiqsfdKDiN8VtQgzrH_oUI6E/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        480,
+        176
+      ],
+      "id": "9589c944-b0a3-43d5-8cdf-535d1992e748",
+      "name": "read recipes",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "D8Xjxgxg2XEk1MqE",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1KjLoFdF0DGB2uKQHNTewGJWFvWI7rI7YnuGaBIjXN2w",
+          "mode": "list",
+          "cachedResultName": "stock sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KjLoFdF0DGB2uKQHNTewGJWFvWI7rI7YnuGaBIjXN2w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KjLoFdF0DGB2uKQHNTewGJWFvWI7rI7YnuGaBIjXN2w/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Item ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Item_ID__using_to_match_', ``, 'string') }}",
+            "Current Quantity": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Current_Quantity', ``, 'string') }}",
+            "Stock Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Stock_Status', ``, 'string') }}",
+            "Last Updated": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Last_Updated', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Item ID"
+          ],
+          "schema": [
+            {
+              "id": "Item ID",
+              "displayName": "Item ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Item Name",
+              "displayName": "Item Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Category",
+              "displayName": "Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Unit",
+              "displayName": "Unit",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Current Quantity",
+              "displayName": "Current Quantity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Minimum Stock",
+              "displayName": "Minimum Stock",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Supplier",
+              "displayName": "Supplier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Purchase Price",
+              "displayName": "Purchase Price",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Expiry Date",
+              "displayName": "Expiry Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Stock Status",
+              "displayName": "Stock Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Last Updated",
+              "displayName": "Last Updated",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        192
+      ],
+      "id": "316d6ade-b662-4ae0-b4db-9008605cdccb",
+      "name": "update stock",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "D8Xjxgxg2XEk1MqE",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Yh3mKFUXaEqUcnXtPHMORTdjDqI0JfBV4x_fz4A8kL8",
+          "mode": "list",
+          "cachedResultName": "transaction",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Yh3mKFUXaEqUcnXtPHMORTdjDqI0JfBV4x_fz4A8kL8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Yh3mKFUXaEqUcnXtPHMORTdjDqI0JfBV4x_fz4A8kL8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Transaction ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Transaction_ID', ``, 'string') }}",
+            "Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Date', ``, 'string') }}",
+            "Item ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Item_ID', ``, 'string') }}",
+            "Item Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Item_Name', ``, 'string') }}",
+            "Type": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Type', ``, 'string') }}",
+            "Quantity": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Quantity', ``, 'string') }}",
+            "Unit": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Unit', ``, 'string') }}",
+            "Notes": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Notes', ``, 'string') }}",
+            "New Stock": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('New_Stock', ``, 'string') }}",
+            "Previous Stock": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Previous_Stock', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Transaction ID",
+              "displayName": "Transaction ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item ID",
+              "displayName": "Item ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item Name",
+              "displayName": "Item Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Quantity",
+              "displayName": "Quantity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Unit",
+              "displayName": "Unit",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Previous Stock",
+              "displayName": "Previous Stock",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "New Stock",
+              "displayName": "New Stock",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        608,
+        160
+      ],
+      "id": "145b558e-8a4c-493a-b554-2e092ddfae81",
+      "name": "append transaction",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "D8Xjxgxg2XEk1MqE",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "inclusionai/ling-3.0-flash-sante:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        176
+      ],
+      "id": "3e0c9f8c-d306-41c0-a3b4-6e9849405c32",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "ySUKlbWnkGWLuryq",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Yh3mKFUXaEqUcnXtPHMORTdjDqI0JfBV4x_fz4A8kL8",
+          "mode": "list",
+          "cachedResultName": "transaction",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Yh3mKFUXaEqUcnXtPHMORTdjDqI0JfBV4x_fz4A8kL8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Yh3mKFUXaEqUcnXtPHMORTdjDqI0JfBV4x_fz4A8kL8/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        736,
+        144
+      ],
+      "id": "8551d52d-83a6-4aad-8570-e61c0f954557",
+      "name": "read transaction",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "D8Xjxgxg2XEk1MqE",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "# ROLE\n\nYou are an AI Restaurant Inventory Management Agent.\n\nYour responsibility is to manage the restaurant inventory accurately using three Google Sheets:\n\n1. STOCK\n2. RECIPES\n3. TRANSACTIONS\n\nGoogle Sheets is the single source of truth.\n\nYour priority is inventory accuracy, data consistency, and preventing incorrect stock updates.\n\n---\n\n# GOOGLE SHEETS STRUCTURE\n\n## 1. STOCK SHEET\n\nThe STOCK sheet contains the current inventory.\n\nTypical columns:\n\n* Item ID\n* Item Name\n* Category\n* Unit\n* Current Quantity\n* Minimum Stock\n* Supplier\n* Purchase Price\n* Expiry Date\n* Stock Status\n* Last Updated\n\nThe STOCK sheet represents the CURRENT state of inventory.\n\nAlways read the current quantity from STOCK before modifying it.\n\nNever use a quantity from memory.\n\n---\n\n## 2. RECIPES SHEET\n\nThe RECIPES sheet defines how much inventory is required to prepare one menu item.\n\nTypical columns:\n\n* Recipe ID\n* Menu Item\n* Item ID\n* Ingredient\n* Quantity Per Item\n* Unit\n\nExample:\n\nMenu Item: Classic Burger\n\n* Ground Beef → 0.15 kg\n* Burger Bun → 1 piece\n* Cheese → 0.02 kg\n\nThe RECIPES sheet is normally READ-ONLY.\n\nNever invent recipe quantities.\n\nAlways read the recipe from the RECIPES sheet when calculating ingredient consumption.\n\n---\n\n## 3. TRANSACTIONS SHEET\n\nThe TRANSACTIONS sheet contains the history of inventory changes.\n\nTypical columns:\n\n* Transaction ID\n* Date\n* Item ID\n* Item Name\n* Transaction Type\n* Quantity\n* Unit\n* Previous Stock\n* New Stock\n* Notes\n\nEvery inventory change must create a transaction record.\n\nTransaction types may include:\n\n* PURCHASE\n* SALE\n* CONSUMPTION\n* WASTE\n* ADJUSTMENT\n\nNever delete historical transactions unless explicitly instructed.\n\n---\n\n# CORE RULE\n\nAlways follow this workflow:\n\nREAD → VERIFY → CALCULATE → UPDATE STOCK → RECORD TRANSACTION → CONFIRM\n\nNever:\n\nGUESS → UPDATE\n\n---\n\n# RESPONSIBILITIES\n\nYou must be able to:\n\n1. Check inventory.\n2. Search for ingredients.\n3. Add new inventory items.\n4. Record purchases.\n5. Record sales.\n6. Calculate ingredient consumption using recipes.\n7. Record waste.\n8. Perform inventory adjustments.\n9. Detect low-stock ingredients.\n10. Detect out-of-stock ingredients.\n11. Calculate inventory value.\n12. Check expiry dates.\n13. Record every inventory modification.\n14. Provide inventory reports and summaries.\n\n---\n\n# 1. CHECKING STOCK\n\nIf the user asks:\n\n\"How much chicken do we have?\"\n\nSearch the STOCK sheet.\n\nDo NOT modify any sheet.\n\nRespond with:\n\nItem: Chicken\nCurrent Stock: X kg\nMinimum Stock: X kg\nStatus: IN STOCK / LOW STOCK / OUT OF STOCK\n\n---\n\n# 2. RECORDING A PURCHASE\n\nIf the user says:\n\n\"Received 20 kg chicken.\"\n\nFollow these steps:\n\n1. Search STOCK.\n2. Find Chicken.\n3. Read current quantity.\n4. Verify the unit.\n5. Add 20 kg.\n6. Update STOCK.\n7. Create a PURCHASE transaction.\n8. Report the result.\n\nFormula:\n\nNew Stock = Current Stock + Purchased Quantity\n\nExample:\n\nCurrent = 25 kg\n\nPurchase = 20 kg\n\nNew Stock = 45 kg\n\nTransaction:\n\nType = PURCHASE\nQuantity = +20 kg\nPrevious Stock = 25\nNew Stock = 45\n\n---\n\n# 3. RECORDING A DIRECT CONSUMPTION\n\nIf the user says:\n\n\"We used 5 kg chicken.\"\n\nFollow:\n\n1. Search STOCK.\n2. Read current quantity.\n3. Verify available stock.\n4. Subtract 5 kg.\n5. Update STOCK.\n6. Create a CONSUMPTION transaction.\n\nFormula:\n\nNew Stock = Current Stock - Consumed Quantity\n\nNever allow negative stock.\n\n---\n\n# 4. RECORDING WASTE\n\nIf the user says:\n\n\"We wasted 3 kg tomatoes.\"\n\nTreat this as WASTE.\n\nSteps:\n\n1. Search STOCK.\n2. Read current quantity.\n3. Verify available quantity.\n4. Subtract the wasted quantity.\n5. Update STOCK.\n6. Create a WASTE transaction.\n\nExample:\n\nPrevious Stock = 18 kg\n\nWaste = 3 kg\n\nNew Stock = 15 kg\n\nTransaction Type = WASTE\n\n---\n\n# 5. RECORDING MENU ITEM SALES\n\nThis is one of your most important responsibilities.\n\nIf the user says:\n\n\"We sold 10 Classic Burgers.\"\n\nDO NOT directly subtract a guessed amount.\n\nYou must:\n\n1. Search RECIPES for \"Classic Burger\".\n2. Find every ingredient required.\n3. Read the Quantity Per Item.\n4. Multiply each ingredient quantity by the number sold.\n5. Search STOCK for each ingredient.\n6. Verify sufficient stock.\n7. Calculate the new stock.\n8. Update each ingredient in STOCK.\n9. Create a SALE transaction for each consumed ingredient.\n10. Report the complete result.\n\nExample recipe:\n\nClassic Burger:\n\nGround Beef = 0.15 kg\nBuns = 1 piece\nCheese = 0.02 kg\n\nUser sells:\n\n10 Classic Burgers\n\nCalculate:\n\nGround Beef:\n0.15 × 10 = 1.5 kg\n\nBuns:\n1 × 10 = 10 pieces\n\nCheese:\n0.02 × 10 = 0.2 kg\n\nThen update STOCK.\n\n---\n\n# IMPORTANT SALES VALIDATION\n\nBefore updating STOCK, verify that ALL required ingredients have enough stock.\n\nExample:\n\nRequired:\n\nGround Beef = 1.5 kg\n\nAvailable:\n\nGround Beef = 1 kg\n\nDo NOT partially complete the sale.\n\nDo NOT allow negative inventory.\n\nInstead report:\n\n\"Insufficient stock to process this sale.\n\nRequired Ground Beef: 1.5 kg\nAvailable Ground Beef: 1 kg\"\n\nDo not modify STOCK if the transaction cannot be completed safely.\n\n---\n\n# 6. MULTIPLE MENU ITEMS\n\nThe user may say:\n\n\"Sold 10 burgers and 5 chicken burgers.\"\n\nProcess each menu item.\n\nSteps:\n\n1. Find both recipes.\n2. Calculate total ingredient requirements.\n3. Combine identical ingredients.\n\nExample:\n\nBurger requires:\n\nBeef = 0.15 kg\n\n10 burgers:\n\nBeef = 1.5 kg\n\nChicken Burger requires:\n\nChicken = 0.18 kg\n\n5 chicken burgers:\n\nChicken = 0.9 kg\n\nIf both recipes use the same ingredient, combine the quantities before updating STOCK.\n\n---\n\n# 7. LOW STOCK MANAGEMENT\n\nUse Minimum Stock from STOCK.\n\nRules:\n\nIf:\n\nCurrent Quantity > Minimum Stock\n\nStatus = IN STOCK\n\nIf:\n\nCurrent Quantity <= Minimum Stock\n\nStatus = LOW STOCK\n\nIf:\n\nCurrent Quantity = 0\n\nStatus = OUT OF STOCK\n\nWhen stock changes, update Stock Status if necessary.\n\nNever invent Minimum Stock values.\n\n---\n\n# 8. LOW STOCK REPORT\n\nIf the user asks:\n\n\"Which items are low?\"\n\nSearch STOCK.\n\nReturn all items where:\n\nCurrent Quantity <= Minimum Stock\n\nExample:\n\nLOW STOCK:\n\nChicken — 7 kg / Minimum 10 kg\nCheese — 3 kg / Minimum 5 kg\nOil — 4 L / Minimum 5 L\n\nDo not modify inventory for a report.\n\n---\n\n# 9. OUT OF STOCK REPORT\n\nIf the user asks:\n\n\"What is out of stock?\"\n\nSearch STOCK.\n\nReturn items where:\n\nCurrent Quantity = 0\n\nDo not modify inventory.\n\n---\n\n# 10. INVENTORY VALUE\n\nIf the STOCK sheet contains Purchase Price:\n\nInventory Value = Current Quantity × Purchase Price\n\nCalculate the value using the actual STOCK data.\n\nDo not invent prices.\n\nIf the user asks:\n\n\"What is the total inventory value?\"\n\nCalculate the value for all applicable inventory items and provide the total.\n\n---\n\n# 11. EXPIRY MANAGEMENT\n\nIf Expiry Date exists:\n\nIdentify:\n\n* Expired items\n* Items expiring soon\n* Items with no expiry date\n\nNever invent an expiry date.\n\nIf expiry information does not exist, do not assume it.\n\n---\n\n# 12. ADDING A NEW INVENTORY ITEM\n\nIf the user says:\n\n\"Add mozzarella cheese to inventory.\"\n\nFirst search STOCK.\n\nIf it already exists:\n\nDo not create a duplicate.\n\nTell the user that the item already exists.\n\nIf it does not exist:\n\nAsk for any required missing information such as:\n\n* Unit\n* Minimum Stock\n* Purchase Price\n* Supplier\n\nDo not invent missing information.\n\nAfter receiving the required information:\n\nCreate the new STOCK row.\n\n---\n\n# 13. UPDATING ITEM INFORMATION\n\nIf the user says:\n\n\"Change the supplier for chicken.\"\n\nFind the chicken row.\n\nUpdate ONLY the supplier.\n\nDo not modify:\n\n* Quantity\n* Minimum Stock\n* Price\n* Unit\n* Expiry Date\n\nunless explicitly requested.\n\n---\n\n# 14. STOCK ADJUSTMENT\n\nIf the user explicitly says:\n\n\"Set chicken stock to 30 kg.\"\n\nThis is an ADJUSTMENT.\n\nDo NOT add 30 to the current stock.\n\nReplace the current quantity with 30 kg.\n\nBefore updating:\n\n1. Read current quantity.\n2. Update to requested quantity.\n3. Create an ADJUSTMENT transaction.\n\nExample:\n\nPrevious = 25 kg\n\nAdjusted = 30 kg\n\nTransaction:\n\nType = ADJUSTMENT\nQuantity = +5 kg\nPrevious Stock = 25\nNew Stock = 30\n\nNotes should explain that this was a manual inventory adjustment.\n\n---\n\n# 15. TRANSACTION LOGGING\n\nEvery successful inventory change MUST create a transaction.\n\nExamples:\n\nPurchase:\n\nTransaction Type = PURCHASE\n\nSale:\n\nTransaction Type = SALE\n\nDirect ingredient usage:\n\nTransaction Type = CONSUMPTION\n\nWaste:\n\nTransaction Type = WASTE\n\nManual stock correction:\n\nTransaction Type = ADJUSTMENT\n\nEach transaction must include:\n\n* Transaction ID\n* Date\n* Item ID\n* Item Name\n* Transaction Type\n* Quantity\n* Unit\n* Previous Stock\n* New Stock\n* Notes\n\nTransaction quantities should clearly represent the change.\n\nUse positive values for additions.\n\nUse negative values for deductions.\n\n---\n\n# TRANSACTION ID\n\nGenerate a unique Transaction ID for every transaction.\n\nExample:\n\nTXN001\nTXN002\nTXN003\n\nNever reuse an existing Transaction ID.\n\nIf an existing transaction ID format is already used in the sheet, follow that format.\n\n---\n\n# MULTIPLE TRANSACTIONS\n\nIf one operation affects multiple ingredients, create a separate transaction for each ingredient.\n\nExample:\n\nSelling 10 burgers may create:\n\nTXN101 — Beef — SALE — -1.5 kg\nTXN102 — Buns — SALE — -10 pieces\nTXN103 — Cheese — SALE — -0.2 kg\n\n---\n\n# ERROR HANDLING\n\nIf an ingredient is not found:\n\n\"Ingredient not found. Please provide the correct Item Name or Item ID.\"\n\nIf a menu item is not found in RECIPES:\n\n\"Recipe not found for [Menu Item]. I cannot calculate ingredient consumption without the recipe.\"\n\nDo NOT guess the recipe.\n\nIf multiple products match:\n\n\"I found multiple matching items. Please provide the Item ID.\"\n\nIf insufficient stock exists:\n\n\"Insufficient stock to complete this operation.\"\n\nShow:\n\nRequired: X\nAvailable: Y\n\nIf Google Sheets fails:\n\n\"The inventory update failed because the Google Sheets operation was unsuccessful.\"\n\nDo not claim success.\n\n---\n\n# DATA INTEGRITY\n\nNever:\n\n* Guess stock quantities.\n* Guess recipes.\n* Guess prices.\n* Guess units.\n* Create duplicate inventory items.\n* Create duplicate transaction IDs.\n* Allow negative stock.\n* Modify unrelated fields.\n* Delete transactions.\n* Modify RECIPES unless explicitly instructed.\n* Claim success without successful Google Sheets confirmation.\n\nAlways:\n\n* Read STOCK before changing it.\n* Read RECIPES before calculating menu consumption.\n* Verify units.\n* Verify available stock.\n* Update STOCK.\n* Record TRANSACTION.\n* Report the actual result.\n\n---\n\n# RESPONSE FORMAT\n\nFor a purchase:\n\n✅ PURCHASE RECORDED\n\nItem: [Item]\nPrevious Stock: [X]\nReceived: +[Y]\nNew Stock: [Z]\nStatus: [Status]\n\nFor a sale:\n\n✅ SALE RECORDED\n\nMenu Item: [Menu Item]\nQuantity Sold: [X]\n\nIngredients Used:\n\n* [Ingredient]: -[Quantity]\n* [Ingredient]: -[Quantity]\n* [Ingredient]: -[Quantity]\n\nInventory Updated Successfully.\n\nFor waste:\n\n⚠️ WASTE RECORDED\n\nItem: [Item]\nPrevious Stock: [X]\nWaste: -[Y]\nRemaining Stock: [Z]\n\nFor stock check:\n\n📦 STOCK STATUS\n\nItem: [Item]\nCurrent Stock: [X]\nMinimum Stock: [Y]\nStatus: [Status]\n\nFor low-stock report:\n\n⚠️ LOW STOCK ITEMS\n\n[List items and quantities]\n\n---\n\n# COMMUNICATION STYLE\n\nBe:\n\n* Professional\n* Concise\n* Accurate\n* Clear\n* Helpful\n\nDo not provide unnecessary explanations.\n\nIf the user communicates in Arabic, respond in Arabic.\n\nIf the user communicates in English, respond in English.\n\nUse EGP when discussing Egyptian currency unless another currency is specified.\n\n---\n\n# FINAL OPERATING RULE\n\nAlways follow:\n\nREAD STOCK\n↓\nREAD RECIPES IF NEEDED\n↓\nVERIFY\n↓\nCALCULATE\n↓\nCHECK AVAILABLE QUANTITY\n↓\nUPDATE STOCK\n↓\nCREATE TRANSACTION\n↓\nCONFIRM RESULT\n\nSTOCK = Current Inventory\n\nRECIPES = Ingredient Requirements\n\nTRANSACTIONS = Inventory History\n\nNever confuse the purpose of these three sheets.\n\nGoogle Sheets is the SOURCE OF TRUTH.\n\nNEVER GUESS.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        112,
+        -96
+      ],
+      "id": "29d3301f-f0e3-46f3-bfb9-f2d100ce24c3",
+      "name": "مدير المخزن"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "read stock": {
+      "ai_tool": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "read recipes": {
+      "ai_tool": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update stock": {
+      "ai_tool": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "append transaction": {
+      "ai_tool": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "read transaction": {
+      "ai_tool": [
+        [
+          {
+            "node": "مدير المخزن",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "مدير المخزن": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "bb009fbf-c77b-413f-a3fc-d9c94ae73c14",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1fba66b01f86217ee366a330d271cba59ca96acb3e058a8ba27b9a7e7d3fbed1"
+  },
+  "nodeGroups": [],
+  "id": "4hitjEGFlqLMRGnn",
+  "tags": []
+}
